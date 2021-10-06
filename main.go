@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() { fmt.Println(intersect([]int{1}, []int{2})) }
+func main() { fmt.Println(moveZeroes([]int{0, 1, 0, 3, 12})) }
 
 func removeDuplicates(nums []int) int {
 	if len(nums) == 0 {
@@ -121,4 +121,63 @@ func intersect(nums1 []int, nums2 []int) []int {
 		}
 	}
 	return result
+}
+
+func plusOne(nums []int) []int {
+	length := len(nums)
+	if length == 1 && nums[0] == 9 {
+		return []int{1, 0}
+	}
+	if nums[length-1] == 9 {
+		increment := 0
+		for i := length - 1; i >= 0; i-- {
+			if nums[i] == 9 {
+				nums[i] = 0
+				increment = 1
+			} else {
+				nums[i] += increment
+				increment = 0
+				break
+			}
+		}
+	} else {
+		nums[length-1]++
+	}
+	if nums[0] == 0 {
+		return append([]int{1}, nums...)
+	}
+	return nums
+}
+
+func moveZeroes(nums []int) []int {
+	var zeros []int
+	for i := len(nums) - 1; i >= 0; i-- {
+		if nums[i] < len(nums) {
+			if nums[i] == 0 {
+				zeros = append(zeros, 0)
+				nums = append(nums[:i], nums[i+1:]...)
+			}
+		}
+	}
+	return append(nums, zeros...)
+}
+
+func twoSum(nums []int, target int) []int {
+	var r []int
+	for i := 0; i != len(nums); i++ {
+
+		start := nums[i]
+		end := nums[len(nums)-(i+1)]
+
+		fmt.Println(start, end)
+
+		if start+end == target {
+			r = []int{i, len(nums) - (i + 1)}
+		} else if start+nums[i+1] == target {
+			r = []int{i, i + 1}
+		} else if end+nums[len(nums)-(i+1)] == target {
+			r = []int{len(nums) - (i + 1), len(nums) - (i + 1)}
+		}
+	}
+	return r
 }

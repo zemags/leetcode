@@ -120,3 +120,65 @@ func TestIntersect(t *testing.T) {
 		})
 	}
 }
+
+func TestPlusOne(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		expected []int
+	}{
+		{actual: []int{1}, expected: []int{2}},
+		{actual: []int{0}, expected: []int{1}},
+		{actual: []int{9}, expected: []int{1, 0}},
+		{actual: []int{1, 2, 3}, expected: []int{1, 2, 4}},
+		{actual: []int{1, 2, 9}, expected: []int{1, 3, 0}},
+		{actual: []int{4, 3, 2, 1}, expected: []int{4, 3, 2, 2}},
+		{actual: []int{9, 9}, expected: []int{1, 0, 0}},
+		{actual: []int{9, 9, 9}, expected: []int{1, 0, 0, 0}},
+		{actual: []int{8, 9}, expected: []int{9, 0}},
+		{actual: []int{9, 8, 9}, expected: []int{9, 9, 0}},
+	}
+
+	for _, tt := range tests {
+		t.Run("plusone", func(t *testing.T) {
+			actual := plusOne(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestMoveZeroes(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		expected []int
+	}{
+		{actual: []int{0}, expected: []int{0}},
+		{actual: []int{0, 0}, expected: []int{0, 0}},
+		{actual: []int{0, 1, 0, 3, 12}, expected: []int{1, 3, 12, 0, 0}},
+	}
+
+	for _, tt := range tests {
+		t.Run("move zeros", func(t *testing.T) {
+			actual := moveZeroes(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestTwoSum(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		target   int
+		expected []int
+	}{
+		{actual: []int{2, 7, 11, 15}, target: 9, expected: []int{0, 1}},
+		{actual: []int{3, 2, 4}, target: 6, expected: []int{1, 2}},
+		{actual: []int{3, 3}, target: 6, expected: []int{0, 1}},
+	}
+
+	for _, tt := range tests {
+		t.Run("two sum", func(t *testing.T) {
+			actual := twoSum(tt.actual, tt.target)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
