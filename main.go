@@ -163,21 +163,16 @@ func moveZeroes(nums []int) []int {
 }
 
 func twoSum(nums []int, target int) []int {
-	var r []int
-	for i := 0; i != len(nums); i++ {
+	var x, y int
+	m := make(map[int]int)
 
-		start := nums[i]
-		end := nums[len(nums)-(i+1)]
-
-		fmt.Println(start, end)
-
-		if start+end == target {
-			r = []int{i, len(nums) - (i + 1)}
-		} else if start+nums[i+1] == target {
-			r = []int{i, i + 1}
-		} else if end+nums[len(nums)-(i+1)] == target {
-			r = []int{len(nums) - (i + 1), len(nums) - (i + 1)}
+	for i := 0; i < len(nums); i++ {
+		res := target - nums[i]
+		_, ex := m[res]
+		if ex {
+			x, y = i, m[res]
 		}
+		m[nums[i]] = i
 	}
-	return r
+	return []int{x, y}
 }

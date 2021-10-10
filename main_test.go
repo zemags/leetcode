@@ -178,7 +178,7 @@ func TestTwoSum(t *testing.T) {
 	for _, tt := range tests {
 		t.Run("two sum", func(t *testing.T) {
 			actual := twoSum(tt.actual, tt.target)
-			assert.Equal(t, tt.expected, actual)
+			assert.ElementsMatch(t, tt.expected, actual)
 		})
 	}
 }
