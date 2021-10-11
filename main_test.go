@@ -182,3 +182,62 @@ func TestTwoSum(t *testing.T) {
 		})
 	}
 }
+
+func TestReverseString(t *testing.T) {
+	expected := []byte("abcd")
+	actual := reverseString([]byte("dcba"))
+	assert.Equal(t, expected, actual)
+
+	expected = []byte("olleh")
+	actual = reverseString([]byte("hello"))
+	assert.Equal(t, expected, actual)
+
+	expected = []byte("hannah")
+	actual = reverseString([]byte("hannah"))
+	assert.Equal(t, expected, actual)
+}
+
+func TestIsAnagram(t *testing.T) {
+	s := "anagram"
+	tt := "nagaram"
+	actual := isAnagram(s, tt)
+	assert.Equal(t, true, actual)
+
+	s = "rat"
+	tt = "car"
+	actual = isAnagram(s, tt)
+	assert.Equal(t, false, actual)
+}
+
+func TestFibonacciRecursive(t *testing.T) {
+	actual := fibonacciRecursive(4)
+	assert.Equal(t, 3, actual)
+
+	actual = fibonacciRecursive(1)
+	assert.Equal(t, 1, actual)
+
+	actual = fibonacciRecursive(5)
+	assert.Equal(t, 5, actual)
+}
+
+func TestFibonacciLoop(t *testing.T) {
+	actual := fibonacciLoop(4)
+	assert.Equal(t, 3, actual)
+
+	actual = fibonacciLoop(1)
+	assert.Equal(t, 1, actual)
+
+	actual = fibonacciLoop(5)
+	assert.Equal(t, 5, actual)
+}
+
+func TestFibonacciWhile(t *testing.T) {
+	actual := fibonacciWhile(4)
+	assert.Equal(t, 3, actual)
+
+	actual = fibonacciWhile(1)
+	assert.Equal(t, 1, actual)
+
+	actual = fibonacciWhile(5)
+	assert.Equal(t, 5, actual)
+}

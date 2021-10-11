@@ -4,6 +4,7 @@ import "fmt"
 
 func main() { fmt.Println(moveZeroes([]int{0, 1, 0, 3, 12})) }
 
+// arrays
 func removeDuplicates(nums []int) int {
 	if len(nums) == 0 {
 		return 0
@@ -175,4 +176,64 @@ func twoSum(nums []int, target int) []int {
 		m[nums[i]] = i
 	}
 	return []int{x, y}
+}
+
+// strings
+func reverseString(s []byte) []byte {
+	l := len(s) - 1
+	for i := 0; i < len(s)/2; i++ {
+		s[l-i], s[i] = s[i], s[l-i]
+	}
+	return s
+}
+
+func isAnagram(s string, t string) bool {
+	f := func() map[byte]int {
+		m := make(map[byte]int)
+		s := []byte("abcdefghijklmnopqrstuvwxyz")
+		for _, v := range s {
+			m[v] = 0
+		}
+		return m
+	}
+	sm, tm := f(), f()
+	for _, v := range []byte(s) {
+		sm[v]++
+
+	}
+	for _, v := range []byte(t) {
+		tm[v]++
+	}
+	for k := range f() {
+		if sm[k] != tm[k] {
+			return false
+		}
+	}
+	return true
+}
+
+// other
+func fibonacciRecursive(x int) int {
+	if x == 1 || x == 2 {
+		return 1
+	}
+	return fibonacciRecursive(x-1) + fibonacciRecursive(x-2)
+}
+
+func fibonacciLoop(x int) int {
+	f1, f2 := 1, 1
+	for i := 2; i < x; i++ {
+		f1, f2 = f2, f1+f2
+	}
+	return f2
+}
+
+func fibonacciWhile(x int) int {
+	f1, f2 := 1, 1
+	x = x - 2
+	for x > 0 {
+		f1, f2 = f2, f1+f2
+		x--
+	}
+	return f2
 }
