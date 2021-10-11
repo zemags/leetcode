@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() { fmt.Println(moveZeroes([]int{0, 1, 0, 3, 12})) }
 
@@ -212,6 +215,19 @@ func isAnagram(s string, t string) bool {
 	return true
 }
 
+func isPalindrome(s string) bool {
+	// m := make(map[byte]byte)
+	// for _, v := range []byte("abcdefghijklmnopqrstuvwxyz") {
+	// 	m[v] = v
+	// }
+	// ss := []byte(strings.ToLower(s))
+	// for i := 0; i < len(ss)-1; i++ {
+
+	// }
+
+	return false
+}
+
 // other
 func fibonacciRecursive(x int) int {
 	if x == 1 || x == 2 {
@@ -236,4 +252,22 @@ func fibonacciWhile(x int) int {
 		x--
 	}
 	return f2
+}
+
+// math
+func fizzBuzz(n int) []string {
+	var r []string
+	for i := 1; i <= n; i++ {
+		fmt.Println(i, i%3, i%5)
+		if i%3 == 0 && i%5 == 0 {
+			r = append(r, "FizzBuzz")
+		} else if i%3 == 0 {
+			r = append(r, "Fizz")
+		} else if i%5 == 0 {
+			r = append(r, "Buzz")
+		} else {
+			r = append(r, strconv.Itoa(i))
+		}
+	}
+	return r
 }

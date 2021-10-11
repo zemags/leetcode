@@ -241,3 +241,19 @@ func TestFibonacciWhile(t *testing.T) {
 	actual = fibonacciWhile(5)
 	assert.Equal(t, 5, actual)
 }
+
+func TestIsPalindrome(t *testing.T) {
+	actual := isPalindrome("A man, a plan, a canal: Panama")
+	assert.Equal(t, true, actual)
+}
+
+func TestFizzBuzz(t *testing.T) {
+	actual := fizzBuzz(3)
+	assert.Equal(t, []string{"1", "2", "Fizz"}, actual)
+
+	actual = fizzBuzz(5)
+	assert.Equal(t, []string{"1", "2", "Fizz", "4", "Buzz"}, actual)
+
+	actual = fizzBuzz(15)
+	assert.Equal(t, []string{"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"}, actual)
+}
