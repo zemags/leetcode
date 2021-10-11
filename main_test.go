@@ -257,3 +257,17 @@ func TestFizzBuzz(t *testing.T) {
 	actual = fizzBuzz(15)
 	assert.Equal(t, []string{"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"}, actual)
 }
+
+func TestCcountPrimes(t *testing.T) {
+	actual := countPrimes(10)
+	assert.Equal(t, 4, actual)
+
+	actual = countPrimes(0)
+	assert.Equal(t, 0, actual)
+
+	actual = countPrimes(1)
+	assert.Equal(t, 0, actual)
+
+	actual = countPrimes(30)
+	assert.Equal(t, 10, actual)
+}

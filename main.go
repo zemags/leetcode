@@ -258,7 +258,6 @@ func fibonacciWhile(x int) int {
 func fizzBuzz(n int) []string {
 	var r []string
 	for i := 1; i <= n; i++ {
-		fmt.Println(i, i%3, i%5)
 		if i%3 == 0 && i%5 == 0 {
 			r = append(r, "FizzBuzz")
 		} else if i%3 == 0 {
@@ -270,4 +269,29 @@ func fizzBuzz(n int) []string {
 		}
 	}
 	return r
+}
+
+func countPrimes(n int) int {
+	var count int
+	if n <= 2 {
+		return 0
+	}
+	arr := make([]bool, n)
+	for idx := range arr {
+		arr[idx] = true
+	}
+	for i := 2; i*i < n; i++ {
+		if arr[i] {
+			for j := i * i; j < n; j = j + i {
+				arr[j] = false
+			}
+		}
+
+	}
+	for i := 2; i < n; i++ {
+		if arr[i] {
+			count++
+		}
+	}
+	return count
 }
