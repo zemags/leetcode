@@ -245,6 +245,8 @@ func TestFibonacciWhile(t *testing.T) {
 func TestIsPalindrome(t *testing.T) {
 	actual := isPalindrome("A man, a plan, a canal: Panama")
 	assert.Equal(t, true, actual)
+	actual = isPalindrome("race a car")
+	assert.Equal(t, false, actual)
 }
 
 func TestFizzBuzz(t *testing.T) {

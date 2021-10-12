@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
-func main() { fmt.Println(moveZeroes([]int{0, 1, 0, 3, 12})) }
+func main() { fmt.Println(isPalindrome("A man, a plan, a canal: Panama")) }
 
 // arrays
 func removeDuplicates(nums []int) int {
@@ -216,16 +217,33 @@ func isAnagram(s string, t string) bool {
 }
 
 func isPalindrome(s string) bool {
-	// m := make(map[byte]byte)
-	// for _, v := range []byte("abcdefghijklmnopqrstuvwxyz") {
-	// 	m[v] = v
-	// }
-	// ss := []byte(strings.ToLower(s))
-	// for i := 0; i < len(ss)-1; i++ {
-
-	// }
-
-	return false
+	m := make(map[byte]byte)
+	for _, v := range []byte("abcdefghijklmnopqrstuvwxyz1234567890") {
+		m[v] = v
+	}
+	ss := []byte(strings.ToLower(s))
+	left, right := 0, len(ss)-1
+	for left < right {
+		for left < right {
+			_, ex1 := m[ss[left]]
+			if ex1 {
+				break
+			}
+			left++
+		}
+		for right > left {
+			_, ex2 := m[ss[right]]
+			if ex2 {
+				break
+			}
+			right--
+		}
+		if ss[left] != ss[right] {
+			return false
+		}
+		left, right = left+1, right-1
+	}
+	return true
 }
 
 // other
