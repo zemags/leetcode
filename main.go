@@ -6,7 +6,18 @@ import (
 	"strings"
 )
 
-func main() { fmt.Println(isPalindrome("A man, a plan, a canal: Panama")) }
+func main() {
+	list := LinkedList{}
+	list.AddForward(9)
+	list.AddForward(10)
+	list.AddForward(11)
+	list.AddForward(12)
+
+	list.ReverseLinkedList()
+
+	list.Display()
+	fmt.Println("len", list.Len())
+}
 
 // arrays
 func removeDuplicates(nums []int) int {
@@ -312,4 +323,74 @@ func countPrimes(n int) int {
 		}
 	}
 	return count
+}
+
+// linked list
+type Node struct {
+	value int
+	next  *Node
+}
+
+type LinkedList struct {
+	length int
+	head   *Node
+}
+
+func (l *LinkedList) Len() int {
+	return l.length
+}
+
+func (l *LinkedList) Display() {
+	for l.head != nil {
+		fmt.Println(l.head.value, l.head)
+		l.head = l.head.next
+	}
+}
+
+func (l *LinkedList) AddBackward(i int) {
+	n := &Node{value: i, next: l.head}
+	l.head = n
+	l.length++
+}
+
+func (l *LinkedList) AddForward(i int) {
+	if l.length == 0 {
+		l.head = &Node{value: i}
+	} else {
+		current := l.head
+		for current.next != nil {
+			current = current.next
+		}
+		current.next = &Node{value: i}
+	}
+	l.length++
+}
+
+func (l *LinkedList) RemoveNode(i int) {
+	current := l.head
+	prev := &Node{}
+	for idx := 1; idx <= l.length; idx++ {
+		if current.value == i && idx == 1 {
+			l.head = current.next
+			break
+		} else if current.value == i {
+			prev.next = current.next
+			break
+		}
+		prev = current
+		current = current.next
+	}
+	l.length--
+}
+
+func (l *LinkedList) ReverseLinkedList() {
+	var prev *Node = nil
+	current := l.head
+	for current != nil {
+		next := current.next
+		current.next = prev
+		prev = current
+		current = next
+	}
+	l.head = prev
 }
