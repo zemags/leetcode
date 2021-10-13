@@ -433,3 +433,25 @@ func contains(window []byte, i byte) bool {
 	}
 	return false
 }
+
+// stack
+type Stack struct {
+	stack  []int
+	length int
+}
+
+func (s *Stack) Push(i int) {
+	s.stack = append(s.stack, i)
+	s.length++
+}
+
+func (s *Stack) Pop() int {
+	last := s.stack[len(s.stack)-1:]
+	s.stack = s.stack[:len(s.stack)-1]
+	s.length--
+	return last[0]
+}
+
+func (s *Stack) IsEmpty() bool {
+	return s.length == 0
+}

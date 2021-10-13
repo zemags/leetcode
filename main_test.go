@@ -292,3 +292,14 @@ func TestMmovingWindow(t *testing.T) {
 		})
 	}
 }
+
+func TestStack(t *testing.T) {
+	s := &Stack{}
+	s.Push(1)
+	s.Push(2)
+	assert.Equal(t, []int{1, 2}, s.stack)
+	s.Push(3)
+	s.Push(4)
+	actual := s.Pop()
+	assert.Equal(t, 4, actual)
+}
