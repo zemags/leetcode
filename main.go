@@ -394,3 +394,42 @@ func (l *LinkedList) ReverseLinkedList() {
 	}
 	l.head = prev
 }
+
+// moving window find longest substring in string
+func movingWindow(s string) int {
+	b := []byte(s)
+	n := len(b)
+	right := 0 // window right border
+	var window []byte
+	maxLen := 0 // window len
+	for right < n {
+		if !contains(window, b[right]) {
+			window = append(window, b[right])
+		} else {
+			if len(window) > maxLen {
+				maxLen = len(window) // update window len if contains
+			}
+			for contains(window, b[right]) {
+				window = window[1:]
+			}
+			window = append(window, b[right])
+		}
+		right++
+	}
+	var result int
+	if maxLen > len(window) {
+		result = maxLen
+	} else {
+		result = len(window)
+	}
+	return result
+}
+
+func contains(window []byte, i byte) bool {
+	for _, j := range window {
+		if j == i {
+			return true
+		}
+	}
+	return false
+}

@@ -273,3 +273,22 @@ func TestCcountPrimes(t *testing.T) {
 	actual = countPrimes(30)
 	assert.Equal(t, 10, actual)
 }
+
+func TestMmovingWindow(t *testing.T) {
+	tests := []struct {
+		actual   string
+		expected int
+	}{
+		{actual: "abcabcbb", expected: 3},
+		{actual: "bbbbb", expected: 1},
+		{actual: "pwwkew", expected: 3},
+		{actual: "adeafgdc", expected: 6},
+	}
+
+	for _, tt := range tests {
+		t.Run("moving window", func(t *testing.T) {
+			actual := movingWindow(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
