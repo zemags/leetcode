@@ -455,3 +455,44 @@ func (s *Stack) Pop() int {
 func (s *Stack) IsEmpty() bool {
 	return s.length == 0
 }
+
+// binary search
+func binarySearchRecursive(nums []int, target int) bool {
+	l := len(nums)
+	if l == 1 && nums[0] == target {
+		return true
+	}
+	if l == 0 {
+		return false
+	}
+	mid := l / 2
+	if target == nums[mid] {
+		return true
+	} else if len(nums) == 1 && nums[mid] != target {
+		return false
+	} else {
+		if target > nums[mid] {
+			return binarySearchRecursive(nums[mid+1:], target)
+		} else {
+			return binarySearchRecursive(nums[:mid], target)
+		}
+	}
+}
+
+// binary search non recursive
+func binarySearch(nums []int, target int) int {
+	start, end := 0, len(nums)-1
+	for start <= end {
+		mid := (start + end) / 2
+		if nums[mid] == target {
+			return mid
+		} else {
+			if nums[mid] < target {
+				start++
+			} else {
+				end--
+			}
+		}
+	}
+	return -1
+}

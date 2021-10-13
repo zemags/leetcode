@@ -303,3 +303,17 @@ func TestStack(t *testing.T) {
 	actual := s.Pop()
 	assert.Equal(t, 4, actual)
 }
+
+func TestBinarySearchRecursive(t *testing.T) {
+	actual := binarySearchRecursive([]int{-1, 0, 3, 5, 9, 12}, 9)
+	assert.Equal(t, true, actual)
+	actual = binarySearchRecursive([]int{-1, 0, 3, 5, 9, 12}, 2)
+	assert.Equal(t, false, actual)
+}
+
+func TestBbinarySearch(t *testing.T) {
+	actual := binarySearch([]int{-1, 0, 3, 5, 9, 12}, 9)
+	assert.Equal(t, 4, actual)
+	actual = binarySearch([]int{-1, 0, 3, 5, 9, 12}, 2)
+	assert.Equal(t, -1, actual)
+}
