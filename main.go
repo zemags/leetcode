@@ -496,3 +496,25 @@ func binarySearch(nums []int, target int) int {
 	}
 	return -1
 }
+
+// queue
+type Queue struct {
+	queue  []int
+	length int
+}
+
+func (q *Queue) Enqueue(i int) {
+	q.queue = append(q.queue, i)
+	q.length++
+}
+
+func (q *Queue) Dequeue() int {
+	r := q.queue[q.length-1]
+	q.queue = q.queue[:q.length-1]
+	q.length--
+	return r
+}
+
+func (q *Queue) IsEmpty() bool {
+	return q.length == 0
+}

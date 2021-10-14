@@ -317,3 +317,20 @@ func TestBbinarySearch(t *testing.T) {
 	actual = binarySearch([]int{-1, 0, 3, 5, 9, 12}, 2)
 	assert.Equal(t, -1, actual)
 }
+
+func TestQueue(t *testing.T) {
+	q := &Queue{}
+	q.Enqueue(1)
+	q.Enqueue(2)
+	q.Enqueue(3)
+	assert.Equal(t, []int{1, 2, 3}, q.queue)
+
+	actual := q.Dequeue()
+	assert.Equal(t, 3, actual)
+	assert.Equal(t, []int{1, 2}, q.queue)
+
+	q.Dequeue()
+	q.Dequeue()
+	actualBool := q.IsEmpty()
+	assert.Equal(t, true, actualBool)
+}
