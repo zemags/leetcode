@@ -334,3 +334,20 @@ func TestQueue(t *testing.T) {
 	actualBool := q.IsEmpty()
 	assert.Equal(t, true, actualBool)
 }
+
+func TestDeque(t *testing.T) {
+	d := &Deque{}
+
+	d.AddHead(1)
+	d.AddHead(2)
+	d.AddHead(3)
+	actual := d.GetHead()
+	assert.Equal(t, 3, actual)
+	assert.Equal(t, 2, d.length)
+
+	d.AddTail(4)
+	d.AddTail(5)
+	actual = d.GetTail()
+	assert.Equal(t, 5, actual)
+	assert.Equal(t, 3, d.length)
+}

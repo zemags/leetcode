@@ -518,3 +518,33 @@ func (q *Queue) Dequeue() int {
 func (q *Queue) IsEmpty() bool {
 	return q.length == 0
 }
+
+// deque head is right side
+type Deque struct {
+	deque  []int
+	length int
+}
+
+func (d *Deque) AddHead(i int) {
+	d.deque = append(d.deque, i)
+	d.length++
+}
+
+func (d *Deque) AddTail(i int) {
+	d.deque = append([]int{i}, d.deque...)
+	d.length++
+}
+
+func (d *Deque) GetHead() int {
+	r := d.deque[d.length-1]
+	d.deque = d.deque[:d.length-1]
+	d.length--
+	return r
+}
+
+func (d *Deque) GetTail() int {
+	r := d.deque[0]
+	d.deque = d.deque[1:]
+	d.length--
+	return r
+}
