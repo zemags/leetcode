@@ -351,3 +351,11 @@ func TestDeque(t *testing.T) {
 	assert.Equal(t, 5, actual)
 	assert.Equal(t, 3, d.length)
 }
+
+func TestInsertToHeap(t *testing.T) {
+	h := &Heap{}
+	for _, i := range []int{1, 2, 3, 5, 2, 4} {
+		h.Insert(i)
+	}
+	assert.Equal(t, []int{5, 3, 4, 1, 2, 2}, h.heap)
+}

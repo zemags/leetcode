@@ -548,3 +548,50 @@ func (d *Deque) GetTail() int {
 	d.length--
 	return r
 }
+
+// the hanoi tower
+func hanoiTower(height int, fromTower, midTower, toTower string) { //nolint
+	if height >= 1 {
+		hanoiTower(height-1, fromTower, midTower, toTower)
+		fmt.Println(fromTower, toTower)
+		hanoiTower(height-1, midTower, toTower, fromTower)
+	}
+}
+
+// binary heap
+type Heap struct {
+	heap []int
+	size int
+}
+
+func (h *Heap) Insert(i int) {
+	h.heap = append(h.heap, i)
+	h.size++
+	index := h.size - 1
+	for h.heap[parent(index)] < h.heap[index] {
+		h.swap(parent(index), index)
+		index = parent(index)
+	}
+}
+
+func parent(i int) int {
+	return (i - 1) / 2
+}
+
+func (h *Heap) swap(i, j int) {
+	h.heap[i], h.heap[j] = h.heap[j], h.heap[i]
+}
+
+// bubble sort
+func sortColors(nums []int) {
+	for i := len(nums) - 1; i >= 0; i-- {
+		for j := 0; j < i; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
+}
+
+// selection sort
+// func selec
