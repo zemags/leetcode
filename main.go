@@ -583,7 +583,7 @@ func (h *Heap) swap(i, j int) {
 }
 
 // bubble sort
-func sortColors(nums []int) {
+func sortColors(nums []int) []int { //nolint
 	for i := len(nums) - 1; i >= 0; i-- {
 		for j := 0; j < i; j++ {
 			if nums[j] > nums[j+1] {
@@ -591,7 +591,22 @@ func sortColors(nums []int) {
 			}
 		}
 	}
+	return nums
 }
 
 // selection sort
-// func selec
+func selectionSort(nums []int) []int { //nolint
+	for i := len(nums) - 1; i >= 0; i-- {
+		currentMax := 0
+
+		for j := 1; j < i+1; j++ {
+			if nums[j] > nums[currentMax] {
+				currentMax = j
+			}
+			temp := nums[j]
+			nums[j] = nums[currentMax]
+			nums[currentMax] = temp
+		}
+	}
+	return nums
+}

@@ -359,3 +359,13 @@ func TestInsertToHeap(t *testing.T) {
 	}
 	assert.Equal(t, []int{5, 3, 4, 1, 2, 2}, h.heap)
 }
+
+func TestSortColors(t *testing.T) {
+	actual := sortColors([]int{5, 3, 2, 6, 10})
+	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
+}
+
+func TestSelectionSort(t *testing.T) {
+	actual := selectionSort([]int{5, 3, 2, 6, 10})
+	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
+}
