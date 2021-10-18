@@ -603,10 +603,10 @@ func selectionSort(nums []int) []int { //nolint
 			if nums[j] > nums[currentMax] {
 				currentMax = j
 			}
-			temp := nums[j]
-			nums[j] = nums[currentMax]
-			nums[currentMax] = temp
 		}
+		temp := nums[i]
+		nums[i] = nums[currentMax]
+		nums[currentMax] = temp
 	}
 	return nums
 }

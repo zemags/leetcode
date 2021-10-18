@@ -368,4 +368,7 @@ func TestSortColors(t *testing.T) {
 func TestSelectionSort(t *testing.T) {
 	actual := selectionSort([]int{5, 3, 2, 6, 10})
 	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
+
+	actual = selectionSort([]int{5, 4, 3, 2})
+	assert.Equal(t, []int{2, 3, 4, 5}, actual)
 }
