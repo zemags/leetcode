@@ -610,3 +610,28 @@ func selectionSort(nums []int) []int { //nolint
 	}
 	return nums
 }
+
+// quicksort
+func quickSort(nums []int) []int { //nolint
+	l := len(nums)
+	if l < 2 {
+		return nums
+	}
+	if l == 2 {
+		if nums[0] <= nums[1] {
+			return nums
+		} else {
+			return []int{nums[1], nums[0]}
+		}
+	}
+	pivot := nums[0]
+	var left, right []int
+	for _, i := range nums[1:] {
+		if i <= pivot {
+			left = append(left, i)
+		} else {
+			right = append(right, i)
+		}
+	}
+	return append(quickSort(left), append([]int{pivot}, quickSort(right)...)...)
+}

@@ -372,3 +372,17 @@ func TestSelectionSort(t *testing.T) {
 	actual = selectionSort([]int{5, 4, 3, 2})
 	assert.Equal(t, []int{2, 3, 4, 5}, actual)
 }
+
+func TestQuickSort(t *testing.T) {
+	actual := quickSort([]int{6})
+	assert.Equal(t, []int{6}, actual)
+
+	actual = quickSort([]int{6, 10})
+	assert.Equal(t, []int{6, 10}, actual)
+
+	actual = quickSort([]int{16, 10})
+	assert.Equal(t, []int{10, 16}, actual)
+
+	actual = quickSort([]int{5, 3, 2, 6, 10})
+	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
+}
