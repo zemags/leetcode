@@ -635,3 +635,73 @@ func quickSort(nums []int) []int { //nolint
 	}
 	return append(quickSort(left), append([]int{pivot}, quickSort(right)...)...)
 }
+
+func longestSubarray(nums []int) int {
+
+	m := make(map[string]int)
+
+	var result, current int
+
+	if nums[0] == 0 {
+		nums = nums[1:]
+		m["left"] = 0
+	}
+
+	for idx := range nums {
+		left, exLeft := m["left"]
+		right, exRight := m["right"]
+
+		if exRight {
+			current = len(nums[left:right])
+			if m["left"]+1 == right {
+				result = current
+				current = 0
+			}
+			m["left"] = m["right"]
+			delete(m, "right")
+		}
+
+		if !exLeft && nums[idx] == 0 {
+			m["left"] = idx
+			continue
+		}
+
+		if !exRight && nums[idx] == 0 {
+			m["right"] = idx
+			continue
+		}
+
+	}
+	return result
+}
+
+func mergeSort(nums []int) []int {
+	l := len(nums)
+	if l < 2 {
+		return nums
+	}
+	if l == 2 {
+		if nums[0] <= nums[1] {
+			return nums
+		} else {
+			return []int{nums[1], nums[0]}
+		}
+	}
+	left, right := mergeSort(nums[:l/2]), mergeSort(nums[l/2:])
+	r := len(left)
+	if len(left) > len(right) {
+		r = len(right)
+	}
+	var res []int
+	for i := 0; i < r; i++ {
+		if left[i] < right[i] {
+			res = append(res, left[i])
+			res = append(res, right[i])
+
+		} else {
+			res = append(res, right[i])
+			res = append(res, left[i])
+		}
+	}
+	return append(res, right[r:]...)
+}

@@ -386,3 +386,38 @@ func TestQuickSort(t *testing.T) {
 	actual = quickSort([]int{5, 3, 2, 6, 10})
 	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
 }
+
+func TestLlongestSubarray(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		expected int
+	}{
+		// {actual: []int{1, 1, 0, 1}, expected: 3},
+		{actual: []int{0, 1, 1, 1, 0, 1, 1, 0, 1}, expected: 5},
+		// {actual: []int{1, 1, 1}, expected: 2},
+	}
+
+	for _, tt := range tests {
+		t.Run("longets subarray", func(t *testing.T) {
+			actual := longestSubarray(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestMergeSort(t *testing.T) {
+	actual := mergeSort([]int{6})
+	assert.Equal(t, []int{6}, actual)
+
+	actual = mergeSort([]int{6, 10})
+	assert.Equal(t, []int{6, 10}, actual)
+
+	actual = mergeSort([]int{16, 10})
+	assert.Equal(t, []int{10, 16}, actual)
+
+	actual = mergeSort([]int{3, 2, 4, 3})
+	assert.Equal(t, []int{2, 3, 3, 4}, actual)
+
+	actual = mergeSort([]int{5, 3, 2, 6, 10})
+	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
+}
