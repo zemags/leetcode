@@ -637,42 +637,51 @@ func quickSort(nums []int) []int { //nolint
 }
 
 func longestSubarray(nums []int) int {
-
-	m := make(map[string]int)
-
-	var result, current int
-
-	if nums[0] == 0 {
-		nums = nums[1:]
-		m["left"] = 0
-	}
-
-	for idx := range nums {
-		left, exLeft := m["left"]
-		right, exRight := m["right"]
-
-		if exRight {
-			current = len(nums[left:right])
-			if m["left"]+1 == right {
-				result = current
-				current = 0
+	var res []int
+	var countZeros, countOnes int
+	for stop := 0; stop < len(nums); stop++ {
+		var maxCount, count, zeros int
+		if nums[stop] == 0 {
+			countZeros++
+		} else {
+			countOnes++
+		}
+		for start := stop; start < len(nums); start++ {
+			if nums[start] == 1 {
+				count++
+			} else {
+				maxCount += count
+				zeros++
+				count = 0
 			}
-			m["left"] = m["right"]
-			delete(m, "right")
+			if zeros == 1 {
+				if len(res) != 0 {
+					if res[len(res)-1] < maxCount+count {
+						res[len(res)-1] = maxCount + count
+					}
+				} else {
+					res = append(res, maxCount+count)
+				}
+			}
+			if zeros > 1 {
+				if len(res) != 0 {
+					if res[len(res)-1] < maxCount {
+						res[len(res)-1] = maxCount
+					}
+				} else {
+					res = append(res, maxCount+count)
+				}
+				break
+			}
 		}
-
-		if !exLeft && nums[idx] == 0 {
-			m["left"] = idx
-			continue
-		}
-
-		if !exRight && nums[idx] == 0 {
-			m["right"] = idx
-			continue
-		}
-
 	}
-	return result
+	if countOnes == len(nums) {
+		return countOnes - 1
+	}
+	if countZeros == len(nums) {
+		return 0
+	}
+	return res[len(res)-1]
 }
 
 func mergeSort(nums []int) []int {

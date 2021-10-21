@@ -392,9 +392,10 @@ func TestLlongestSubarray(t *testing.T) {
 		actual   []int
 		expected int
 	}{
-		// {actual: []int{1, 1, 0, 1}, expected: 3},
+		{actual: []int{1, 1, 0, 1}, expected: 3},
 		{actual: []int{0, 1, 1, 1, 0, 1, 1, 0, 1}, expected: 5},
-		// {actual: []int{1, 1, 1}, expected: 2},
+		{actual: []int{1, 1, 1}, expected: 2},
+		{actual: []int{0, 0, 0}, expected: 0},
 	}
 
 	for _, tt := range tests {
