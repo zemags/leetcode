@@ -720,12 +720,42 @@ func firstBadVersion(n int, bad int) int {
 	var result, hight int = n, n
 	for low <= hight {
 		mid = low + (hight-low)/2
-		fmt.Println(low, mid, hight, result)
 		if mid == bad {
 			result = mid
 			hight = mid - 1
 		} else {
 			low = mid + 1
+		}
+	}
+	return result
+}
+
+func maxSubArrayQuadric(nums []int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+	var result int
+	for start := 0; start < len(nums); start++ {
+		current := 0
+		for stop := start; stop < len(nums); stop++ {
+			current += nums[stop]
+			if current > result {
+				result = current
+			}
+		}
+	}
+	return result
+}
+
+func maxSubArrayLinear(nums []int) int {
+	current, result := nums[0], nums[0]
+	for start := 1; start < len(nums); start++ {
+		current += nums[start]
+		if current < nums[start] {
+			current = nums[start]
+		}
+		if result < current {
+			result = current
 		}
 	}
 	return result

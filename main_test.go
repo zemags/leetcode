@@ -429,3 +429,39 @@ func TestFirstBadVersion(t *testing.T) {
 	actual = firstBadVersion(1, 1)
 	assert.Equal(t, 1, actual)
 }
+
+func TestMmaxSubArrayQuadric(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		expected int
+	}{
+		{actual: []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, expected: 6},
+		{actual: []int{1}, expected: 1},
+		{actual: []int{5, 4, -1, 7, 8}, expected: 23},
+	}
+
+	for _, tt := range tests {
+		t.Run("max subarray", func(t *testing.T) {
+			actual := maxSubArrayQuadric(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestMmaxSubArrayLinear(t *testing.T) {
+	tests := []struct {
+		actual   []int
+		expected int
+	}{
+		{actual: []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, expected: 6},
+		{actual: []int{1}, expected: 1},
+		{actual: []int{5, 4, -1, 7, 8}, expected: 23},
+	}
+
+	for _, tt := range tests {
+		t.Run("max subarray", func(t *testing.T) {
+			actual := maxSubArrayLinear(tt.actual)
+			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
