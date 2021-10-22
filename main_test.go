@@ -422,3 +422,10 @@ func TestMergeSort(t *testing.T) {
 	actual = mergeSort([]int{5, 3, 2, 6, 10})
 	assert.Equal(t, []int{2, 3, 5, 6, 10}, actual)
 }
+
+func TestFirstBadVersion(t *testing.T) {
+	actual := firstBadVersion(5, 4)
+	assert.Equal(t, 4, actual)
+	actual = firstBadVersion(1, 1)
+	assert.Equal(t, 1, actual)
+}

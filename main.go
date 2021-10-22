@@ -714,3 +714,19 @@ func mergeSort(nums []int) []int {
 	}
 	return append(res, right[r:]...)
 }
+
+func firstBadVersion(n int, bad int) int {
+	var low, mid int
+	var result, hight int = n, n
+	for low <= hight {
+		mid = low + (hight-low)/2
+		fmt.Println(low, mid, hight, result)
+		if mid == bad {
+			result = mid
+			hight = mid - 1
+		} else {
+			low = mid + 1
+		}
+	}
+	return result
+}
