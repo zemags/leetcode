@@ -808,6 +808,19 @@ func SymmetricOrder(child *BinaryTree, a *[]int) []int {
 	return *a
 }
 
+func ReverseSymmetricOrder(child *BinaryTree, a *[]int) []int {
+	if child != nil {
+		if child.right != nil {
+			ReverseSymmetricOrder(child.right, a)
+		}
+		*a = append(*a, child.value)
+		if child.left != nil {
+			ReverseSymmetricOrder(child.left, a)
+		}
+	}
+	return *a
+}
+
 // riverse tree walking
 func PostOrder(child *BinaryTree, a *[]int) []int {
 	if child != nil {

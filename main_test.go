@@ -483,6 +483,10 @@ func TestSimpleBinaryTree(t *testing.T) {
 	assert.Equal(t, []int{6, 5, 4, 3, 3, 2}, actual)
 
 	actualArray = []int{}
+	actual = ReverseSymmetricOrder(b, &actualArray)
+	assert.Equal(t, []int{2, 3, 3, 4, 5, 6}, actual)
+
+	actualArray = []int{}
 	actual = PostOrder(b, &actualArray)
 	assert.Equal(t, []int{6, 3, 4, 5, 2, 3}, actual)
 
