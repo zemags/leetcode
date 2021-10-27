@@ -7,16 +7,6 @@ import (
 )
 
 func main() {
-	list := LinkedList{}
-	list.AddForward(9)
-	list.AddForward(10)
-	list.AddForward(11)
-	list.AddForward(12)
-
-	list.ReverseLinkedList()
-
-	list.Display()
-	fmt.Println("len", list.Len())
 }
 
 // arrays
@@ -759,4 +749,75 @@ func maxSubArrayLinear(nums []int) int {
 		}
 	}
 	return result
+}
+
+// simple binary tree on lists
+type BinaryTree struct {
+	value int
+	left  *BinaryTree
+	right *BinaryTree
+}
+
+func CreateTree(val int) *BinaryTree {
+	return &BinaryTree{
+		value: val,
+	}
+}
+
+func (b *BinaryTree) Insert(val int) {
+	if b.value <= val {
+		if b.left == nil {
+			b.left = &BinaryTree{value: val}
+		} else {
+			b.left.Insert(val)
+		}
+	} else {
+		if b.right == nil {
+			b.right = &BinaryTree{value: val}
+		} else {
+			b.right.Insert(val)
+		}
+	}
+}
+
+// direct tree walking
+func PreOrder(child *BinaryTree, a *[]int) []int {
+	if child != nil {
+		*a = append(*a, child.value)
+		if child.left != nil {
+			PreOrder(child.left, a)
+		}
+		if child.right != nil {
+			PreOrder(child.right, a)
+		}
+	}
+	return *a
+}
+
+// symmetric tree walking
+func SymmetricOrder(child *BinaryTree, a *[]int) []int {
+	if child != nil {
+		if child.left != nil {
+			SymmetricOrder(child.left, a)
+		}
+		*a = append(*a, child.value)
+		if child.right != nil {
+			SymmetricOrder(child.right, a)
+		}
+	}
+	return *a
+}
+
+// riverse tree walking
+func PostOrder(child *BinaryTree, a *[]int) []int {
+	if child != nil {
+		if child.left != nil {
+			PostOrder(child.left, a)
+		}
+		if child.right != nil {
+			PostOrder(child.right, a)
+		}
+		*a = append(*a, child.value)
+	}
+	return *a
 }

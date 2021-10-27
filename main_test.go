@@ -465,3 +465,25 @@ func TestMmaxSubArrayLinear(t *testing.T) {
 		})
 	}
 }
+
+func TestSimpleBinaryTree(t *testing.T) {
+	b := CreateTree(3)
+	b.Insert(5)
+	b.Insert(4)
+	b.Insert(2)
+	b.Insert(6)
+	b.Insert(3)
+
+	actualArray := []int{}
+	actual := PreOrder(b, &actualArray)
+	assert.Equal(t, []int{3, 5, 6, 4, 3, 2}, actual)
+
+	actualArray = []int{}
+	actual = SymmetricOrder(b, &actualArray)
+	assert.Equal(t, []int{6, 5, 4, 3, 3, 2}, actual)
+
+	actualArray = []int{}
+	actual = PostOrder(b, &actualArray)
+	assert.Equal(t, []int{6, 3, 4, 5, 2, 3}, actual)
+
+}
