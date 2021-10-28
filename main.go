@@ -834,3 +834,81 @@ func PostOrder(child *BinaryTree, a *[]int) []int {
 	}
 	return *a
 }
+
+func (b *BinaryTree) GetMinValue() int {
+	return 0
+}
+
+func (b *BinaryTree) GetMaxValue() int {
+	return 0
+}
+
+func GetTreeDepth(tree *BinaryTree) int {
+	if tree == nil {
+		return 0
+	}
+	left := GetTreeDepth(tree.left)
+	right := GetTreeDepth(tree.right)
+	if left > right {
+		return left + 1
+	}
+	return right + 1
+}
+
+// from min to max
+func (b *BinaryTree) InsertOrderedAscending(val int) {
+
+}
+
+// from max to min
+func (b *BinaryTree) InsertOrderedDescending(val int) {
+
+}
+
+// Validate Binary Search Tree
+func isValidBST(root *BinaryTree) bool { // nolint
+	a := []int{}
+	SymmetricOrder(root, &a)
+	cur := a[0]
+	for i := 1; i < len(a); i++ {
+		if cur < a[i] {
+			cur = a[i]
+		} else {
+			return false
+		}
+	}
+	return true
+}
+
+func missingNumber(nums []int) int {
+	nums = missingNumberSort(nums)
+	var res int
+	for i := 0; i <= len(nums); i++ {
+		if i < len(nums) {
+			if i != nums[i] {
+				res = i
+				break
+			}
+		} else {
+			res = i
+			break
+		}
+	}
+	return res
+}
+
+func missingNumberSort(nums []int) []int {
+	// selection sort
+	for i := len(nums) - 1; i >= 0; i-- {
+		currentMax := 0
+		for j := 1; j < i+1; j++ {
+			if nums[j] > nums[currentMax] {
+				currentMax = j
+			}
+		}
+		temp := nums[i]
+		nums[i] = nums[currentMax]
+		nums[currentMax] = temp
+	}
+	return nums
+}

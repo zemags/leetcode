@@ -490,4 +490,32 @@ func TestSimpleBinaryTree(t *testing.T) {
 	actual = PostOrder(b, &actualArray)
 	assert.Equal(t, []int{6, 3, 4, 5, 2, 3}, actual)
 
+	actualDepth := GetTreeDepth(b)
+	assert.Equal(t, 4, actualDepth)
+}
+
+func TestOrderedTree(t *testing.T) {
+	b := CreateTree(3)
+	b.Insert(5)
+	b.Insert(4)
+	b.Insert(2)
+	b.Insert(6)
+	b.Insert(3)
+}
+
+func TestMmissingNumber(t *testing.T) {
+	actual := missingNumber([]int{3, 0, 1})
+	assert.Equal(t, 2, actual)
+
+	actual = missingNumber([]int{0, 1})
+	assert.Equal(t, 2, actual)
+
+	actual = missingNumber([]int{9, 6, 4, 2, 3, 5, 7, 0, 1})
+	assert.Equal(t, 8, actual)
+
+	actual = missingNumber([]int{0})
+	assert.Equal(t, 1, actual)
+
+	actual = missingNumber([]int{1, 2})
+	assert.Equal(t, 0, actual)
 }
