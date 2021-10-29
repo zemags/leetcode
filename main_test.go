@@ -519,3 +519,11 @@ func TestMmissingNumber(t *testing.T) {
 	actual = missingNumber([]int{1, 2})
 	assert.Equal(t, 0, actual)
 }
+
+func TestRemoveNthFromEnd(t *testing.T) {
+	l := &LinkedList{}
+	for i := 1; i < 6; i++ {
+		l.AddForward(i)
+	}
+	l.RemoveNthFromEnd(2)
+}

@@ -385,6 +385,24 @@ func (l *LinkedList) ReverseLinkedList() {
 	l.head = prev
 }
 
+// letcode problem
+func (l *LinkedList) RemoveNthFromEnd(n int) {
+	dummy := &Node{next: l.head}
+	left, right := dummy, l.head
+
+	for i := 0; i <= n; i++ {
+		right = right.next
+	}
+
+	for right != nil {
+		left = left.next
+		right = right.next
+	}
+
+	left.next = left.next.next
+	l.head = dummy.next
+}
+
 // moving window find longest substring in string
 func movingWindow(s string) int {
 	b := []byte(s)
