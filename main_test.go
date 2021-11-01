@@ -527,3 +527,24 @@ func TestRemoveNthFromEnd(t *testing.T) {
 	}
 	l.RemoveNthFromEnd(2)
 }
+
+func TestRob(t *testing.T) {
+	actual := rob([]int{1, 2, 3, 1})
+	assert.Equal(t, 4, actual)
+	actual = rob([]int{2, 7, 9, 3, 1})
+	assert.Equal(t, 12, actual)
+	actual = rob([]int{1, 1})
+	assert.Equal(t, 1, actual)
+	actual = rob([]int{1, 1, 2})
+	assert.Equal(t, 3, actual)
+	actual = rob([]int{1})
+	assert.Equal(t, 1, actual)
+	actual = rob([]int{1, 3, 1})
+	assert.Equal(t, 3, actual)
+	actual = rob([]int{1, 2, 1, 1})
+	assert.Equal(t, 3, actual)
+	actual = rob([]int{1, 3, 4, 1})
+	assert.Equal(t, 5, actual)
+	actual = rob([]int{2, 3, 4, 6})
+	assert.Equal(t, 9, actual)
+}

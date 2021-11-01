@@ -930,3 +930,23 @@ func missingNumberSort(nums []int) []int {
 	}
 	return nums
 }
+
+func rob(nums []int) int {
+	var left, right int
+
+	for i := 0; i < len(nums); i++ {
+		if i%2 == 0 {
+			left = max(left+nums[i], right)
+		} else {
+			right = max(right+nums[i], left)
+		}
+	}
+	return max(left, right)
+}
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
